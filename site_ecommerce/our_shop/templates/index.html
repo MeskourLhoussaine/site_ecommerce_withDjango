@@ -1,6 +1,7 @@
 
 {% extends "base.html" %}
 {% block content %}
+
     <div class="row">
         <div class="col-md-12">
             <form class="card card-sm">
@@ -16,16 +17,18 @@
         </div>
     </div>
     <div class="row">
+      {% for produit in produit_obj %}
         <div class="col-md-3">
           <div class = 'card'>
-              <img src="" alt="" class = "card-ing-top">
+              <img src="{{ produit.image }}" alt="" class = "card-ing-top">
                 <div class="card-body">
-                    <div class ="card-title">Titre</div>
-                    <div class="card-text">Prix</div>
+                    <div class ="card-title">{{ produit.nom }}</div>
+                    <div class="card-text">{{ produit.prix }}</div>
                     <button type="button" class="btn btn-info">Info</button>
                     <button class="btn btn-success">Add</button>
                 </div>
           </div>
         </div>
+    {% endfor %}
     </div>
 {% endblock %}
