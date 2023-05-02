@@ -25,7 +25,7 @@
                     <div class ="card-title">{{ produit.nom }}</div>
                     <div class="card-text" style="color: #00a32e ">{{ produit.prx }} Dh</div>
                     <a href="{{ produit.id }}" class="btn btn-info">Info</a>
-                    <button class="btn btn-success">Add</button>
+                    <button id="{{ produit.id}}"  class="btn aj btn-success">Add</button>
                 </div>
           </div>
         </div>
@@ -50,4 +50,19 @@
               </ul>
           </div>
     </div>
+{% endblock %}
+{% block js %}
+    <script type="text/javascript">
+    console.log('Juste pour tester');
+    if(localStorage.getItem('panier')==null){
+        var panier = {}
+    }else{
+        panier = JSON.parse(localStorage.getItem('panier'));
+    }
+    $(document).on('click','.aj',function (){
+        console.log('Add');
+        var item_id = this.id.toString();
+        console.log(item_id);
+    });
+    </script>
 {% endblock %}
