@@ -63,6 +63,15 @@
         console.log('Add');
         var item_id = this.id.toString();
         console.log(item_id);
+        if(panier[item_id]!= undefined){
+            panier[item_id]=panier[item_id]+1;
+        }else{
+            panier[item_id]=1;
+        }
+        console.log(panier);
+        localStorage.setItem('panier',JSON.stringify(panier));
+        document.getElementById("panier").innerHTML= "Panier("+Object.keys(panier).length+")";
+
     });
     </script>
 {% endblock %}
