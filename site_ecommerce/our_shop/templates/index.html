@@ -22,7 +22,7 @@
           <div class = 'card'>
               <img src="{{ produit.image }}" alt="" class = "card-ing-top">
                 <div class="card-body">
-                    <div class ="card-title">{{ produit.nom }}</div>
+                    <div id="aa{{ produit.id }}"class ="card-title">{{ produit.nom }}</div>
                     <div class="card-text" style="color: #00a32e ">{{ produit.prx }} Dh</div>
                     <a href="{{ produit.id }}" class="btn btn-info">Info</a>
                     <button id="{{ produit.id}}"  class="btn aj btn-success">Add</button>
@@ -73,5 +73,19 @@
         document.getElementById("panier").innerHTML= "Panier("+Object.keys(panier).length+")";
 
     });
+    AfficherList(panier);
+    function AfficherList(panier){
+        var panierString= " ";
+        panierString += "<h5>Voici votre liste</h5>";
+        var index =1;
+        for (var x in panier){
+            panierString += index;
+            panierString += document.getElementById("aa"+x).innerHTML + "  Quantité :"+panier[x] +" </br>";
+            index +=1;
+        }
+        panierString +="<a href='/checkout' class='btn btn-primary'>Checkout</a>";
+         $('[data-toggle="popover"]').popover();
+         document.getElementById('panier').setAttribute('data-content', panierString);
+    }
     </script>
 {% endblock %}

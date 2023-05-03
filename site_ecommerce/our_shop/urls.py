@@ -1,9 +1,11 @@
 from django.urls import path
-from .views import index, information
+from .views import index, information,checkout
+
 
 
 urlpatterns = [
     path('', index, name='home'),
-    #url dynamique depen de id
-    path('<int:idprod>',information, name='information' ),
+    path('<int:idprod>',information, name='information'),
+    path('checkout',checkout, name='checkout'),
+
 ]
