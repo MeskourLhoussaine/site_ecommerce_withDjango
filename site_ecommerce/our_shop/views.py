@@ -22,7 +22,7 @@ def checkout(request):
         ville = request.POST.get('ville')
         pays = request.POST.get('pays')
         address = request.POST.get('address')
-        com=Commande(nom=nom, email=email,address=address,ville=ville,pays=pays )
+        com=Commande(nom=nom, email=email,ville=ville,pays=pays,address=address)
         com.save()
 
     return render(request,'checkout.html')
