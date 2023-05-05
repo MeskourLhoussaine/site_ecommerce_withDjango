@@ -26,3 +26,11 @@ class Produit(models.Model):
 
     def __str__(self):
         return self.nom
+class Commande(models.Model):
+    items=models.CharField(max_length=300)
+    nom = models.CharField(max_length=120)
+    email= models.EmailField()
+    address=models.CharField(max_length=90)
+    ville = models.CharField(max_length=110)
+    pays = models.CharField(max_length=200)
+    date_Commande=models.DateTimeField(auto_now=True)

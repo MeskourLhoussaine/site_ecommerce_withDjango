@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Produit
+from .models import Produit ,Commande
 from django.core.paginator import Paginator
 
 # Create your views here.
@@ -16,4 +16,13 @@ def information(request, idprod):
     produit_obj = Produit.objects.get(id=idprod)
     return render(request,'information.html',{'produit_obj':produit_obj})
 def checkout(request):
+    if request.method == "POST":
+        nom = request.POST.get('nom')
+        email = request.POST.get('email')
+        ville = request.POST.get('ville')
+        pays = request.POST.get('pays')
+        address = request.POST.get('address')
+        com=Commande(nom=nom, email=email,address=address,ville=ville,pays=pays )
+        com.save()
+
     return render(request,'checkout.html')
