@@ -24,7 +24,9 @@
           <div class="col-md-12">
               <form method="POST">
                   {%csrf_token%}
+     <input type="hidden" id="items"  name="items">
   <div class="form-row">
+
     <div class="form-group col-md-6">
       <label for="inputEmail4">Nom</label>
       <input type="text" id="nom" name="nom" class="form-control" id="inputEmail4" placeholder="Nom">
@@ -62,5 +64,24 @@
      </div>
 
 
-
 {% endblock %}
+{% block js %}
+<script type="text/javascript">
+    if(localStorage.getItem('panier')==null{
+    var panier={};
+    }else{
+    panier= JSON.parse(localStorage.getItem('panier'));
+    }
+    for(item in panier){
+     let nom= panier[item][1];
+     let quantite=panier[item][0];
+     let itemString ='<li class='list-groupe-item d-flex justifly-content-between align-items-centre">
+     ${nom}
+     <span class="badge-primary badge-pill">Qte ${quantite}</span>
+     </li>;
+     $('#item-list').append(itemString );
+    }
+
+   $('#items').val(JSN.stringif(panier));
+</script>
+{% endblock  %}

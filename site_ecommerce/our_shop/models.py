@@ -36,3 +36,5 @@ class Commande(models.Model):
     date_commande=models.DateTimeField(auto_now=True)
     class Meta:
         ordering = ['-date_commande']
+    def __str__(self):
+        return self.nom
