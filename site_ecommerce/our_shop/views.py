@@ -17,12 +17,13 @@ def information(request, idprod):
     return render(request,'information.html',{'produit_obj':produit_obj})
 def checkout(request):
     if request.method == "POST":
+        items =request.POST.get('items')
         nom = request.POST.get('nom')
         email = request.POST.get('email')
         ville = request.POST.get('ville')
         pays = request.POST.get('pays')
         address = request.POST.get('address')
-        com=Commande(nom=nom, email=email,address=address,ville=ville,pays=pays )
+        com=Commande(items=items,nom=nom, email=email,ville=ville,pays=pays,address=address)
         com.save()
 
     return render(request,'checkout.html')

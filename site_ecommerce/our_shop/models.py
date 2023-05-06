@@ -33,10 +33,8 @@ class Commande(models.Model):
     address=models.CharField(max_length=90)
     ville = models.CharField(max_length=110)
     pays = models.CharField(max_length=200)
-    date_Commande=models.DateTimeField(auto_now=True)
-
+    date_commande=models.DateTimeField(auto_now=True)
     class Meta:
-        ordering = ['-date_Commande']
-
+        ordering = ['-date_commande']
     def __str__(self):
         return self.nom
