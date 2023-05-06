@@ -34,3 +34,9 @@ class Commande(models.Model):
     ville = models.CharField(max_length=110)
     pays = models.CharField(max_length=200)
     date_Commande=models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-date_Commande']
+
+    def __str__(self):
+        return self.nom
